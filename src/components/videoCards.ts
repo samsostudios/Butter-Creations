@@ -18,13 +18,10 @@ export const videoCards = () => {
     });
   }
 
-  console.log(cards);
-
   // Helper Functions
   function initCards() {
     const cardLabels = [...document.querySelectorAll('.work-item_label-wrap')];
     const cardViewMore = [...document.querySelectorAll('.work-item_view-more')];
-    const tempVideo = [...document.querySelectorAll('.work-item_video')];
 
     gsap.set([cardLabels, cardViewMore], { y: '100%', opacity: 0 });
     gsap.set(cardViewMore, { rotate: '5deg' });
@@ -34,12 +31,14 @@ export const videoCards = () => {
     const cardTitle = item.querySelector('.work-item_name');
     const cardViewMore = item.querySelector('.work-item_view-more');
     const cardVideo = item.querySelector('.work-item_video') as HTMLVideoElement;
+    const cardImage = item.querySelector('.work-item_image');
     const cardVideoOverlay = item.querySelector('.work-item_bg-wrap');
 
     cardVideo.play();
 
     const animation = gsap.timeline();
 
+    animation.set(cardImage, { opacity: 0 });
     animation.to(cardLabel, { opacity: 1, y: '0%', ease: 'power4.out' });
     animation.to(
       cardTitle,
@@ -60,12 +59,14 @@ export const videoCards = () => {
     const cardTitle = item.querySelector('.work-item_name');
     const cardViewMore = item.querySelector('.work-item_view-more');
     const cardVideo = item.querySelector('.work-item_video') as HTMLVideoElement;
+    const cardImage = item.querySelector('.work-item_image');
     const cardVideoOverlay = item.querySelector('.work-item_bg-wrap');
 
     cardVideo.pause();
 
     const animation = gsap.timeline();
 
+    animation.set(cardImage, { opacity: 1 });
     animation.to(cardLabel, { opacity: 0, y: '100%', ease: 'power4.out' });
     animation.to(
       cardTitle,
@@ -79,5 +80,7 @@ export const videoCards = () => {
     );
     animation.to(cardVideo, { duration: 1, scale: 1, ease: 'power4.out' }, '<');
     animation.to(cardVideoOverlay, { duration: 1, opacity: '40%', ease: 'power4.out' }, '<');
+
+    cardVideo.currentTime = 0;
   }
 };

@@ -1,5 +1,5 @@
 export const workTemplate = () => {
   // Page Globals
   // ------------
-  console.log('work template');
+  // console.log('work template');
 };

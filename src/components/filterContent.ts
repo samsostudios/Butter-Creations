@@ -1,3 +1,5 @@
+import { filterReveal } from '$motion/filterReveal';
+
 export const filterContent = () => {
   let activeFilters: string[] = [];
   let renderQueue: Element[] = [];
@@ -5,6 +7,7 @@ export const filterContent = () => {
   const filterCheckboxes = [...document.querySelectorAll('[data-filter-checkbox]')];
 
   const initialFilter = filterCheckboxes[0].parentElement as HTMLElement;
+  updateInitialCheckbox(initialFilter, 'show');
 
   for (const i in filterCheckboxes) {
     const tempCheckbox = filterCheckboxes[i] as HTMLInputElement;
@@ -21,17 +24,23 @@ export const filterContent = () => {
         clickedSpan.style.color = '#ffffff';
 
         if (filterText !== 'All') {
+          activeFilters = [];
           activeFilters.push(filterText);
           const tempList = filterList(renderQueue, activeFilters);
           renderQueue = tempList;
-          renderUpdate(renderQueue);
+          hideAll();
+          filterReveal(renderQueue);
+          // renderUpdate(renderQueue);
+          checkReset(activeFilters[0]);
           updateInitialCheckbox(initialFilter, 'hide');
         }
 
         if (filterText === 'All') {
           activeFilters = [];
           renderQueue = masterList;
-          renderUpdate(renderQueue);
+          hideAll();
+          filterReveal(renderQueue);
+          // renderUpdate(renderQueue);
           allReset();
         }
       } else {
@@ -42,12 +51,16 @@ export const filterContent = () => {
           activeFilters = updatedFilters;
 
           if (activeFilters.length < 1) {
-            renderUpdate(renderQueue);
+            hideAll();
+            filterReveal(renderQueue);
+            // renderUpdate(renderQueue);
             updateInitialCheckbox(initialFilter, 'show');
           } else {
             const tempList = filterList(renderQueue, activeFilters);
             renderQueue = tempList;
-            renderUpdate(renderQueue);
+            hideAll();
+            filterReveal(renderQueue);
+            // renderUpdate(renderQueue);
           }
         }
       }
@@ -77,11 +90,13 @@ function filterList(items: Element[], filters: string[]) {
 function hideAll() {
   const masterList = [...document.querySelectorAll('[data-filter-item]')];
   for (const item of masterList) {
-    item.classList.add('hide');
+    const temp = item as HTMLElement;
+    temp.style.display = 'none';
   }
 }
 
 function updateInitialCheckbox(initialFilter: Element, setState: string) {
+  // console.log('updated', initialFilter);
   const checkboxContainer = initialFilter.children[0] as HTMLElement;
   const checkboxInput = initialFilter.children[1] as HTMLInputElement;
   const checkboxText = initialFilter.children[2] as HTMLElement;
@@ -94,6 +109,23 @@ function updateInitialCheckbox(initialFilter: Element, setState: string) {
     checkboxInput.checked = true;
     checkboxContainer.classList.add('w--redirected-checked');
     checkboxText.style.color = '#ffffff';
+  }
+}
+
+function checkReset(curFilter: string) {
+  const filterCheckboxes = [...document.querySelectorAll('[data-filter-checkbox]')];
+  for (let i = 0; i < filterCheckboxes.length; i++) {
+    const temp = filterCheckboxes[i] as HTMLInputElement;
+    const tempParent = temp.parentElement as HTMLElement;
+    const tempContainer = tempParent.children[0] as HTMLElement;
+    const tempText = tempParent.childNodes[2] as HTMLElement;
+    const checkText = tempText.innerHTML as string;
+
+    if (checkText !== curFilter) {
+      temp.checked = false;
+      tempContainer.classList.remove('w--redirected-checked');
+      tempText.style.color = '#1e1e1e';
+    }
   }
 }
 

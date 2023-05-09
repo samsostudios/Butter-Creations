@@ -22,7 +22,6 @@ window.Webflow.push(() => {
     about();
   } else if (windowLocation.includes('/work')) {
     const hasFurtherIndex = windowLocation.substring(5);
-    console.log(windowLocation.substring(5));
     if (hasFurtherIndex === '') {
       workOverview();
     } else {

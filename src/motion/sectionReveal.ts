@@ -9,7 +9,7 @@ export const sectionReveal = (tiggerElement: HTMLElement, animateElement: HTMLEl
       trigger: tiggerElement,
       start: 'top 80%',
       end: 'top 80%',
-      markers: true,
+      // markers: true,
       toggleActions: 'play none none reverse',
     },
   });

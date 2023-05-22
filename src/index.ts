@@ -1,6 +1,7 @@
 // eslint-disable-next-line simple-import-sort/imports
 import { smoothScroll } from '$utils/smoothScroll';
 import { menu } from './components/menu';
+import { pageTransition } from './components/pageTransition';
 import { about } from './pages/about';
 import { home } from './pages/home';
 import { workOverview } from './pages/workOverview';
@@ -13,6 +14,7 @@ window.Webflow.push(() => {
   // Site Globals
   menu();
   smoothScroll();
+  pageTransition();
 
   const windowLocation = window.location.pathname as string;
 

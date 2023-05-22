@@ -1,6 +1,7 @@
 // eslint-disable-next-line simple-import-sort/imports
 import { sectionReveal } from '$motion/sectionReveal';
 import { clientSlider } from 'src/components/clientSlider';
+import { reelModal } from 'src/components/reelModal';
 import { testimonialsSlider } from 'src/components/testimonialsSlider';
 
 export const about = () => {
@@ -9,6 +10,7 @@ export const about = () => {
   // console.log('about');
 
   // Hero
+  reelModal();
 
   // Services
   const servicesSection = document.querySelector('.section_about-services') as HTMLElement;

@@ -8,11 +8,11 @@ export const videoCards = () => {
   for (const i in cards) {
     const tempCard = cards[i] as HTMLElement;
 
-    tempCard.addEventListener('mouseenter', (e) => {
+    tempCard.addEventListener('mouseenter', () => {
       // console.log('enter');
       hoverIn(tempCard);
     });
-    tempCard.addEventListener('mouseleave', (e) => {
+    tempCard.addEventListener('mouseleave', () => {
       // console.log('leave');
       hoverOut(tempCard);
     });
@@ -34,11 +34,14 @@ export const videoCards = () => {
     const cardImage = item.querySelector('.work-item_image');
     const cardVideoOverlay = item.querySelector('.work-item_bg-wrap');
 
-    cardVideo.play();
-
     const animation = gsap.timeline();
 
-    animation.set(cardImage, { opacity: 0 });
+    if (!cardVideo.src.includes('webflow.io')) {
+      // console.log('link set');
+      cardVideo.play();
+      animation.set(cardImage, { opacity: 0 });
+    }
+
     animation.to(cardLabel, { opacity: 1, y: '0%', ease: 'power4.out' });
     animation.to(
       cardTitle,
@@ -50,7 +53,7 @@ export const videoCards = () => {
       { duration: 1, opacity: 1, y: '0%', rotate: '0deg', ease: 'power4.out' },
       '<'
     );
-    animation.to(cardVideo, { duration: 1, scale: 1.15, ease: 'power4.out' }, '<');
+    animation.to([cardVideo, cardImage], { duration: 1, scale: 1.15, ease: 'power4.out' }, '<');
     animation.to(cardVideoOverlay, { duration: 1, opacity: '10%', ease: 'power4.out' }, '<');
   }
 
@@ -78,7 +81,7 @@ export const videoCards = () => {
       { duration: 1, opacity: 0, y: '100%', rotate: '5deg', ease: 'power4.out' },
       '<'
     );
-    animation.to(cardVideo, { duration: 1, scale: 1, ease: 'power4.out' }, '<');
+    animation.to([cardVideo, cardImage], { duration: 1, scale: 1, ease: 'power4.out' }, '<');
     animation.to(cardVideoOverlay, { duration: 1, opacity: '40%', ease: 'power4.out' }, '<');
 
     cardVideo.currentTime = 0;

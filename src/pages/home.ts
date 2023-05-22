@@ -1,6 +1,7 @@
 // eslint-disable-next-line simple-import-sort/imports
 import { sectionReveal } from '$motion/sectionReveal';
 import { clientSlider } from 'src/components/clientSlider';
+import { reelModalCursor, reelModal } from 'src/components/reelModal';
 import { testimonialsSlider } from 'src/components/testimonialsSlider';
 import { videoCards } from 'src/components/videoCards';
 
@@ -9,6 +10,10 @@ export const home = () => {
 
   // Page Globals
   // ------------
+
+  // Hero Reel
+  reelModalCursor();
+  reelModal();
 
   // Overview
   const overviewSection = document.querySelector('.section_home-overview') as HTMLElement;

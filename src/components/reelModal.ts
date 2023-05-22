@@ -18,12 +18,10 @@ export const reelModalCursor = () => {
 
     gsap.set(cursor, { xPercent: -50, yPercent: -50 });
     gsap.to(cursor, { x: mouseX, y: mouseY });
-    // console.log(mouseX, mouseY);
   });
 };
 
 export const reelModal = () => {
-  const homeVideo = document.querySelector('.home-hero_video') as HTMLElement;
   const reelTrigger = document.querySelector('[data-reel-open]') as HTMLElement;
   const modalSection = document.querySelector('.section_player-modal') as HTMLElement;
   const modalCloseButton = modalSection.querySelector('a') as HTMLElement;

@@ -6,14 +6,14 @@ export const reelModalCursor = () => {
   const cursor = heroSection.querySelector('.home-hero_video-cursor');
   const reelButton = heroSection.querySelector('.button.is-home-hero');
 
-  heroVideo.addEventListener('mouseenter', () => {
-    gsap.to(cursor, { opacity: 1, ease: 'power4.out' });
-    gsap.to(reelButton, { opacity: 1, ease: 'power4.out' });
-  });
-  heroVideo.addEventListener('mouseleave', () => {
-    gsap.to(cursor, { opacity: 0, ease: 'power4.out' });
-    gsap.to(reelButton, { opacity: 0, ease: 'power4.out' });
-  });
+  // heroVideo.addEventListener('mouseenter', () => {
+  //   gsap.to(cursor, { opacity: 1, ease: 'power4.out' });
+  //   gsap.to(reelButton, { opacity: 1, ease: 'power4.out' });
+  // });
+  // heroVideo.addEventListener('mouseleave', () => {
+  //   gsap.to(cursor, { opacity: 0, ease: 'power4.out' });
+  //   gsap.to(reelButton, { opacity: 0, ease: 'power4.out' });
+  // });
 };
 
 export const reelModal = () => {

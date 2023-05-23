@@ -12,7 +12,7 @@ export const clientSlider = () => {
   const wrapperWidth = sliderWrapper.offsetWidth;
   const computedMovement = sliderWidth - wrapperWidth;
 
-  // console.log(computedMovement);
+  console.log(dataScrollTime);
 
   const animation = gsap.timeline({
     yoyo: true,

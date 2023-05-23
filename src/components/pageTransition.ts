@@ -9,7 +9,11 @@ export const pageTransition = () => {
     const temp = allLinks[i] as HTMLAnchorElement;
     const linkSrc = temp.href;
 
-    if (linkSrc.includes('buttercreations') && !linkSrc.includes('#')) {
+    if (
+      linkSrc.includes('buttercreations') &&
+      !linkSrc.includes('#') &&
+      !linkSrc.includes('mailto')
+    ) {
       temp.addEventListener('click', (e) => {
         e.preventDefault();
         const animation = pageTransitionIn();

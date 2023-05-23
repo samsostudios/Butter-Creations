@@ -28,7 +28,6 @@ export const reelModal = () => {
   const modalVideo = modalSection.querySelector('.player-modal_video') as HTMLElement;
 
   reelTrigger.addEventListener('click', () => {
-    console.log('open');
     modalOpen();
   });
   modalCloseButton.addEventListener('click', () => {
@@ -42,8 +41,6 @@ export const reelModal = () => {
     animation.set([modalVideo, modalCloseButton], { opacity: 0 });
     animation.to(modalSection, { duration: 0.8, opacity: 1, ease: 'power4.out' });
     animation.to([modalVideo, modalCloseButton], { duration: 1, opacity: 1, ease: 'power4.out' });
-
-    console.log('open animation', modalSection);
   }
   function modalClose() {
     const animation = gsap.timeline();

@@ -10,7 +10,7 @@ export const about = () => {
   // console.log('about');
 
   // Hero
-  reelModal();
+  // reelModal();
 
   // Services
   const servicesSection = document.querySelector('.section_about-services') as HTMLElement;

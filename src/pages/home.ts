@@ -13,7 +13,7 @@ export const home = () => {
 
   // Hero Reel
   reelModalCursor();
-  reelModal();
+  // reelModal();
 
   // Overview
   const overviewSection = document.querySelector('.section_home-overview') as HTMLElement;

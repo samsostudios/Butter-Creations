@@ -1,21 +1,26 @@
+// eslint-disable-next-line simple-import-sort/imports
+import { getDeviceType } from '$utils/getDeviceType';
 import { gsap } from 'gsap';
 
 export const videoCards = () => {
-  const cards = [...document.querySelectorAll('[data-video-card]')];
+  const device = getDeviceType();
+  if (device === 'desktop') {
+    const cards = [...document.querySelectorAll('[data-video-card]')];
 
-  initCards();
+    initCards();
 
-  for (const i in cards) {
-    const tempCard = cards[i] as HTMLElement;
+    for (const i in cards) {
+      const tempCard = cards[i] as HTMLElement;
 
-    tempCard.addEventListener('mouseenter', () => {
-      // console.log('enter');
-      hoverIn(tempCard);
-    });
-    tempCard.addEventListener('mouseleave', () => {
-      // console.log('leave');
-      hoverOut(tempCard);
-    });
+      tempCard.addEventListener('mouseenter', () => {
+        // console.log('enter');
+        hoverIn(tempCard);
+      });
+      tempCard.addEventListener('mouseleave', () => {
+        // console.log('leave');
+        hoverOut(tempCard);
+      });
+    }
   }
 
   // Helper Functions

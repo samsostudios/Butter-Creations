@@ -11,7 +11,6 @@ export const pageTransition = () => {
 
     if (linkSrc.includes('buttercreations') && !linkSrc.includes('#')) {
       temp.addEventListener('click', (e) => {
-        console.log('ha');
         e.preventDefault();
         const animation = pageTransitionIn();
         animation.play();

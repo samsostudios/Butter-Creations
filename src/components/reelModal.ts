@@ -8,20 +8,12 @@ export const reelModalCursor = () => {
 
   heroVideo.addEventListener('mouseenter', () => {
     gsap.to(cursor, { opacity: 1, ease: 'power4.out' });
-    gsap.to(reelButton, { opacity: 1, ease: 'power4.out' });
+    // gsap.to(reelButton, { opacity: 1, ease: 'power4.out' });
   });
   heroVideo.addEventListener('mouseleave', () => {
     gsap.to(cursor, { opacity: 0, ease: 'power4.out' });
-    gsap.to(reelButton, { opacity: 0, ease: 'power4.out' });
+    // gsap.to(reelButton, { opacity: 0, ease: 'power4.out' });
   });
-
-  // heroVideo.addEventListener('mousemove', (e) => {
-  //   const mouseX = e.clientX;
-  //   const mouseY = e.clientY;
-
-  //   gsap.set(cursor, { xPercent: -50, yPercent: -50 });
-  //   gsap.to(cursor, { x: mouseX, y: mouseY });
-  // });
 };
 
 export const reelModal = () => {

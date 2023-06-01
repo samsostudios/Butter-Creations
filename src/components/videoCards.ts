@@ -41,7 +41,7 @@ export const videoCards = () => {
 
     const animation = gsap.timeline();
 
-    if (!cardVideo.src.includes('webflow.io')) {
+    if (!cardVideo.src.includes('webflow.io') && !cardVideo.src.includes('buttercreations.com')) {
       // console.log('link set');
       cardVideo.play();
       animation.set(cardImage, { opacity: 0 });

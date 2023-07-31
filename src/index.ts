@@ -3,6 +3,7 @@ import { smoothScroll } from '$utils/smoothScroll';
 import { menu } from './components/menu';
 import { pageTransition } from './components/pageTransition';
 import { about } from './pages/about';
+import { contact } from './pages/contact';
 import { home } from './pages/home';
 import { workOverview } from './pages/workOverview';
 import { workTemplate } from './pages/workTemplate';
@@ -29,5 +30,7 @@ window.Webflow.push(() => {
     } else {
       workTemplate();
     }
+  } else if (windowLocation.includes('/contact')) {
+    contact();
   }
 });

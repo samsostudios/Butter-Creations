@@ -1,11 +1,16 @@
 // eslint-disable-next-line simple-import-sort/imports
+import { breakpoints } from '$utils/breakpoints';
 import { getDeviceType } from '$utils/getDeviceType';
 import { gsap } from 'gsap';
 
 export const videoCards = () => {
-  const device = getDeviceType();
-  if (device === 'desktop') {
+  // const device = getDeviceType();
+  const device = breakpoints();
+  console.log('YOOOOO', device);
+
+  if (device[0] === 'desktop') {
     const cards = [...document.querySelectorAll('[data-video-card]')];
+    console.log('CARDS', cards, device);
 
     initCards();
 
@@ -13,11 +18,11 @@ export const videoCards = () => {
       const tempCard = cards[i] as HTMLElement;
 
       tempCard.addEventListener('mouseenter', () => {
-        // console.log('enter');
+        console.log('enter');
         hoverIn(tempCard);
       });
       tempCard.addEventListener('mouseleave', () => {
-        // console.log('leave');
+        console.log('leave');
         hoverOut(tempCard);
       });
     }
@@ -31,6 +36,7 @@ export const videoCards = () => {
     gsap.set([cardLabels, cardViewMore], { y: '100%', opacity: 0 });
     gsap.set(cardViewMore, { rotate: '5deg' });
   }
+
   function hoverIn(item: HTMLElement) {
     const cardLabel = item.querySelector('.work-item_label-wrap');
     const cardTitle = item.querySelector('.work-item_name');
@@ -41,9 +47,14 @@ export const videoCards = () => {
 
     const animation = gsap.timeline();
 
+    console.log(cardVideo.src);
     if (!cardVideo.src.includes('webflow.io') && !cardVideo.src.includes('buttercreations.com')) {
       // console.log('link set');
-      cardVideo.play();
+      if (cardVideo.paused) {
+        cardVideo.play().catch((error) => {
+          console.error('Error playing video:', error);
+        });
+      }
       animation.set(cardImage, { opacity: 0 });
     }
 
@@ -70,7 +81,9 @@ export const videoCards = () => {
     const cardImage = item.querySelector('.work-item_image');
     const cardVideoOverlay = item.querySelector('.work-item_bg-wrap');
 
-    cardVideo.pause();
+    if (!cardVideo.paused) {
+      cardVideo.pause();
+    }
 
     const animation = gsap.timeline();
 

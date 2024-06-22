@@ -1,62 +1,53 @@
 import { gsap } from 'gsap';
 
 export const pageTransition = () => {
+  const transitionElement = document.querySelector('.transition_component');
   const allLinks = [...document.querySelectorAll('a')];
 
-  pageTransitionOut();
+  // Remove Transition on Page load
+  gsap.to(transitionElement, {
+    delay: 0.5,
+    duration: 0.5,
+    opacity: 0,
+    display: 'none',
+    ease: 'power3.out',
+    onComplete: () => {
+      // Reenable Scrolling
+      gsap.set('html', { height: 'auto' });
+      gsap.set('body', { overflow: 'auto' });
+    },
+  });
 
+  // Link Routing
   for (const i in allLinks) {
     const temp = allLinks[i] as HTMLAnchorElement;
-    const linkSrc = temp.href;
-
-    if (
-      linkSrc.includes('buttercreations') &&
-      !linkSrc.includes('#') &&
-      !linkSrc.includes('mailto')
-    ) {
-      temp.addEventListener('click', (e) => {
+    temp.addEventListener('click', (e) => {
+      if (
+        temp.hostname === window.location.host &&
+        temp.href.indexOf('#') === -1 &&
+        temp.target !== '_blank'
+      ) {
         e.preventDefault();
-        const animation = pageTransitionIn();
-        animation.play();
-        const animationDuration = animation.duration() * 1000;
-        setTimeout(
-          (url: Location) => {
-            window.location = url;
+        const destination = temp.href;
+
+        // Transition In when link clicked
+        gsap.to(transitionElement, {
+          display: 'block',
+          duration: 0.5,
+          opacity: 1,
+          ease: 'power3.out',
+          onComplete: () => {
+            window.location.href = destination;
           },
-          animationDuration,
-          linkSrc
-        );
-      });
+        });
+      }
+    });
+  }
+
+  // On Back Button
+  window.onpageshow = function (event) {
+    if (event.persisted) {
+      window.location.reload();
     }
-  }
-
-  function pageTransitionIn() {
-    const transitionElement = document.querySelector('.transition_component');
-
-    const animation = gsap.timeline({ paused: true });
-    animation.to(transitionElement, {
-      display: 'block',
-      duration: 0.5,
-      opacity: 1,
-      ease: 'power3.out',
-    });
-
-    return animation;
-  }
-
-  function pageTransitionOut() {
-    const transitionElement = document.querySelector('.transition_component');
-
-    const animation = gsap.timeline();
-    animation.set(transitionElement, { display: 'block', opacity: 1 });
-    animation.to(transitionElement, {
-      delay: 0.5,
-      duration: 0.5,
-      opacity: 0,
-      display: 'none',
-      ease: 'power3.out',
-    });
-
-    return animation;
-  }
+  };
 };

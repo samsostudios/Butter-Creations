@@ -12,7 +12,6 @@ export const menu = () => {
     return;
   }
 
-  console.log('here', menuOpenButton, menuCloseButton);
   menuOpenButton.addEventListener('click', () => {
     menuInAnimation();
   });
@@ -44,6 +43,4 @@ export const menuOutAnimation = () => {
   animation.to(menuLinks, { opacity: 0, stagger: { each: -0.1 }, ease: 'power4.inOut' }, '<');
   animation.to(menuStamp, { duration: 1, opacity: 0, rotate: '0deg', ease: 'power4.out' }, '<');
   animation.to(menuComponent, { duration: 1, height: '0%', ease: 'power4.inOut' }, '<0.4');
-
-  //   animation.set(menuComponent, { height: '0%', display: 'none' });
 };

@@ -53,8 +53,6 @@ export const videoCards = () => {
       }
       animation.set(cardImage, { opacity: 0 });
     }
-
-    // animation.to(cardLabel, { opacity: 1, y: '0%', ease: 'power4.out' });
     animation.to(
       cardTitle,
       { duration: 1.5, opacity: 0, y: '-100%', rotate: '10deg', ease: 'power4.out' },

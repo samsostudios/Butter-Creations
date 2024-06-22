@@ -1,16 +1,13 @@
 // eslint-disable-next-line simple-import-sort/imports
 import { breakpoints } from '$utils/breakpoints';
-import { getDeviceType } from '$utils/getDeviceType';
 import { gsap } from 'gsap';
 
 export const videoCards = () => {
   // const device = getDeviceType();
   const device = breakpoints();
-  console.log('YOOOOO', device);
 
   if (device[0] === 'desktop') {
     const cards = [...document.querySelectorAll('[data-video-card]')];
-    console.log('CARDS', cards, device);
 
     initCards();
 
@@ -18,11 +15,11 @@ export const videoCards = () => {
       const tempCard = cards[i] as HTMLElement;
 
       tempCard.addEventListener('mouseenter', () => {
-        console.log('enter');
+        // console.log('enter');
         hoverIn(tempCard);
       });
       tempCard.addEventListener('mouseleave', () => {
-        console.log('leave');
+        // console.log('leave');
         hoverOut(tempCard);
       });
     }
@@ -33,7 +30,7 @@ export const videoCards = () => {
     const cardLabels = [...document.querySelectorAll('.work-item_label-wrap')];
     const cardViewMore = [...document.querySelectorAll('.work-item_view-more')];
 
-    gsap.set([cardLabels, cardViewMore], { y: '100%', opacity: 0 });
+    // gsap.set([cardLabels, cardViewMore], { y: '100%', opacity: 0 });
     gsap.set(cardViewMore, { rotate: '5deg' });
   }
 
@@ -47,7 +44,6 @@ export const videoCards = () => {
 
     const animation = gsap.timeline();
 
-    console.log(cardVideo.src);
     if (!cardVideo.src.includes('webflow.io') && !cardVideo.src.includes('buttercreations.com')) {
       // console.log('link set');
       if (cardVideo.paused) {
@@ -58,15 +54,15 @@ export const videoCards = () => {
       animation.set(cardImage, { opacity: 0 });
     }
 
-    animation.to(cardLabel, { opacity: 1, y: '0%', ease: 'power4.out' });
+    // animation.to(cardLabel, { opacity: 1, y: '0%', ease: 'power4.out' });
     animation.to(
       cardTitle,
-      { duration: 1, opacity: 0, y: '-100%', rotate: '5deg', ease: 'power4.out' },
+      { duration: 1.5, opacity: 0, y: '-100%', rotate: '10deg', ease: 'power4.out' },
       '<'
     );
     animation.to(
       cardViewMore,
-      { duration: 1, opacity: 1, y: '0%', rotate: '0deg', ease: 'power4.out' },
+      { duration: 1.5, opacity: 1, y: '0%', rotate: '0deg', ease: 'power4.out' },
       '<'
     );
     animation.to([cardVideo, cardImage], { duration: 1, scale: 1.15, ease: 'power4.out' }, '<');
@@ -88,15 +84,15 @@ export const videoCards = () => {
     const animation = gsap.timeline();
 
     animation.set(cardImage, { opacity: 1 });
-    animation.to(cardLabel, { opacity: 0, y: '100%', ease: 'power4.out' });
+    // animation.to(cardLabel, { opacity: 0, y: '100%', ease: 'power4.out' });
     animation.to(
       cardTitle,
-      { duration: 1, opacity: 1, y: '0%', rotate: '0deg', ease: 'power4.out' },
+      { duration: 1.5, opacity: 1, y: '0%', rotate: '0deg', ease: 'power4.out' },
       '<'
     );
     animation.to(
       cardViewMore,
-      { duration: 1, opacity: 0, y: '100%', rotate: '5deg', ease: 'power4.out' },
+      { duration: 1.5, opacity: 0, y: '100%', rotate: '10deg', ease: 'power4.out' },
       '<'
     );
     animation.to([cardVideo, cardImage], { duration: 1, scale: 1, ease: 'power4.out' }, '<');

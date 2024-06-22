@@ -3,7 +3,7 @@ import { sectionReveal } from '$motion/sectionReveal';
 import { filterContent } from 'src/components/filterContent';
 import { videoCards } from 'src/components/videoCards';
 
-export const musicWork = () => {
+export const workTemplate = () => {
   console.log('MUSIC');
   // Page Globals
   // ------------

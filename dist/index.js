@@ -4472,6 +4472,11 @@
   var menuLinks = [...menuComponent.querySelectorAll(".menu_link")];
   var menuStamp = menuComponent.querySelector(".mneu_stamp");
   var menu = () => {
+    if (!menuOpenButton || !menuCloseButton) {
+      console.log("WARN:// Not Found (Mobile Menu Buttons)");
+      return;
+    }
+    console.log("here", menuOpenButton, menuCloseButton);
     menuOpenButton.addEventListener("click", () => {
       menuInAnimation();
     });
@@ -6987,19 +6992,15 @@
   // src/components/videoCards.ts
   var videoCards = () => {
     const device = breakpoints();
-    console.log("YOOOOO", device);
     if (device[0] === "desktop") {
       const cards = [...document.querySelectorAll("[data-video-card]")];
-      console.log("CARDS", cards, device);
       initCards();
       for (const i2 in cards) {
         const tempCard = cards[i2];
         tempCard.addEventListener("mouseenter", () => {
-          console.log("enter");
           hoverIn(tempCard);
         });
         tempCard.addEventListener("mouseleave", () => {
-          console.log("leave");
           hoverOut(tempCard);
         });
       }
@@ -7007,7 +7008,6 @@
     function initCards() {
       const cardLabels = [...document.querySelectorAll(".work-item_label-wrap")];
       const cardViewMore = [...document.querySelectorAll(".work-item_view-more")];
-      gsapWithCSS.set([cardLabels, cardViewMore], { y: "100%", opacity: 0 });
       gsapWithCSS.set(cardViewMore, { rotate: "5deg" });
     }
     function hoverIn(item) {
@@ -7018,7 +7018,6 @@
       const cardImage = item.querySelector(".work-item_image");
       const cardVideoOverlay = item.querySelector(".work-item_bg-wrap");
       const animation = gsapWithCSS.timeline();
-      console.log(cardVideo.src);
       if (!cardVideo.src.includes("webflow.io") && !cardVideo.src.includes("buttercreations.com")) {
         if (cardVideo.paused) {
           cardVideo.play().catch((error) => {
@@ -7027,15 +7026,14 @@
         }
         animation.set(cardImage, { opacity: 0 });
       }
-      animation.to(cardLabel, { opacity: 1, y: "0%", ease: "power4.out" });
       animation.to(
         cardTitle,
-        { duration: 1, opacity: 0, y: "-100%", rotate: "5deg", ease: "power4.out" },
+        { duration: 1.5, opacity: 0, y: "-100%", rotate: "10deg", ease: "power4.out" },
         "<"
       );
       animation.to(
         cardViewMore,
-        { duration: 1, opacity: 1, y: "0%", rotate: "0deg", ease: "power4.out" },
+        { duration: 1.5, opacity: 1, y: "0%", rotate: "0deg", ease: "power4.out" },
         "<"
       );
       animation.to([cardVideo, cardImage], { duration: 1, scale: 1.15, ease: "power4.out" }, "<");
@@ -7053,15 +7051,14 @@
       }
       const animation = gsapWithCSS.timeline();
       animation.set(cardImage, { opacity: 1 });
-      animation.to(cardLabel, { opacity: 0, y: "100%", ease: "power4.out" });
       animation.to(
         cardTitle,
-        { duration: 1, opacity: 1, y: "0%", rotate: "0deg", ease: "power4.out" },
+        { duration: 1.5, opacity: 1, y: "0%", rotate: "0deg", ease: "power4.out" },
         "<"
       );
       animation.to(
         cardViewMore,
-        { duration: 1, opacity: 0, y: "100%", rotate: "5deg", ease: "power4.out" },
+        { duration: 1.5, opacity: 0, y: "100%", rotate: "10deg", ease: "power4.out" },
         "<"
       );
       animation.to([cardVideo, cardImage], { duration: 1, scale: 1, ease: "power4.out" }, "<");
@@ -7233,7 +7230,7 @@
   };
 
   // src/pages/workTemplate.ts
-  var musicWork = () => {
+  var workTemplate = () => {
     console.log("MUSIC");
     const workSection = document.querySelector(".section_work");
     const workComponent = document.querySelector(".work_filter-container");
@@ -7246,18 +7243,16 @@
   window.Webflow ||= [];
   window.Webflow.push(() => {
     console.log("/// Butter Creations ///");
-    console.log("/// LOCAL ///", window.location.pathname);
     menu();
     smoothScroll();
     pageTransition();
     const windowLocation = window.location.pathname;
-    console.log(windowLocation);
     if (windowLocation === "/") {
       home();
     } else if (windowLocation.includes("/about")) {
       about();
     } else if (windowLocation.includes("/music")) {
-      musicWork();
+      workTemplate();
     } else if (windowLocation.includes("/work")) {
       const hasFurtherIndex = windowLocation.substring(5);
       if (hasFurtherIndex === "") {

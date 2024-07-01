@@ -6,6 +6,9 @@ const menuComponent = document.querySelector('.menu_component') as HTMLElement;
 const menuLinks = [...menuComponent.querySelectorAll('.menu_link')];
 const menuStamp = menuComponent.querySelector('.mneu_stamp');
 
+console.log('Menu Component', menuComponent);
+console.log('Menu links', menuLinks);
+
 export const menu = () => {
   if (!menuOpenButton || !menuCloseButton) {
     console.log('WARN:// Not Found (Mobile Menu Buttons)');

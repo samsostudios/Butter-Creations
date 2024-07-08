@@ -7,6 +7,7 @@ import { workTestimonials } from 'src/components/workTestimonials';
 
 export const workTemplate = () => {
   console.log('Work overview template');
+  const windowLocation = window.location.pathname as string;
   // Page Globals
   // ------------
   // console.log('work overview');
@@ -16,7 +17,9 @@ export const workTemplate = () => {
   // sectionReveal(workSection, workComponent);
 
   // Service Cards
-  workServices();
+  if (windowLocation !== '/brand') {
+    workServices();
+  }
 
   // Client Testimonials
   workTestimonials();

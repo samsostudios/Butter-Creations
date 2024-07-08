@@ -6,7 +6,7 @@ import { workServices } from 'src/components/workServices';
 import { workTestimonials } from 'src/components/workTestimonials';
 
 export const workTemplate = () => {
-  console.log('Work overview template');
+  // console.log('Work overview template');
   const windowLocation = window.location.pathname as string;
   // Page Globals
   // ------------

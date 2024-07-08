@@ -7312,7 +7312,6 @@
 
   // src/pages/workTemplate.ts
   var workTemplate = () => {
-    console.log("Work overview template");
     const windowLocation = window.location.pathname;
     const heroSection = document.querySelector(".section_work-hero");
     const heroComponent = document.querySelector(".work-hero_component");

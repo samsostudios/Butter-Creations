@@ -7,15 +7,10 @@ export const menu = () => {
   const menuLinks = [...document.querySelectorAll('.menu_link')];
   const menuStamp = document.querySelector('.mneu_stamp');
 
-  console.log('Menu Component', menuComponent);
-  console.log('Menu links', menuLinks);
   if (!menuOpenButton || !menuCloseButton) {
     console.log('WARN:// Not Found (Mobile Menu Buttons)');
     return;
   }
-
-  console.log('menu buttons', menuOpenButton, menuCloseButton);
-  console.log('menu', menuComponent, menuLinks);
   menuOpenButton.addEventListener('click', () => {
     menuIn();
   });

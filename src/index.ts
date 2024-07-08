@@ -26,10 +26,11 @@ window.Webflow.push(() => {
     about();
   } else if (windowLocation.includes('/music')) {
     workTemplate();
-  } else if (windowLocation.includes('/work')) {
+  } else if (windowLocation.includes('/brand')) {
     const hasFurtherIndex = windowLocation.substring(5);
-    if (hasFurtherIndex === '') {
-      workOverview();
+
+    if (hasFurtherIndex === '' || hasFurtherIndex === 'd') {
+      workTemplate();
     } else {
       workDetailTemplate();
     }

@@ -6,7 +6,7 @@ import { workServices } from 'src/components/workServices';
 import { workTestimonials } from 'src/components/workTestimonials';
 
 export const workTemplate = () => {
-  console.log('MUSIC');
+  console.log('Work overview template');
   // Page Globals
   // ------------
   // console.log('work overview');

@@ -3,7 +3,6 @@ import { breakpoints } from '$utils/breakpoints';
 import { gsap } from 'gsap';
 
 export const videoCards = () => {
-  // const device = getDeviceType();
   const device = breakpoints();
 
   if (device[0] === 'desktop') {

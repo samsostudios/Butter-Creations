@@ -7,8 +7,8 @@ export const sectionReveal = (tiggerElement: HTMLElement, animateElement: HTMLEl
   const animation = gsap.timeline({
     scrollTrigger: {
       trigger: tiggerElement,
-      start: 'top 80%',
-      end: 'top 80%',
+      start: 'top 85%',
+      end: 'top 85%',
       // markers: true,
       toggleActions: 'play none none reverse',
     },

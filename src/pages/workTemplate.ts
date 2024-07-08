@@ -12,20 +12,33 @@ export const workTemplate = () => {
   // ------------
   // console.log('work overview');
 
-  // const workSection = document.querySelector('.section_work') as HTMLElement;
-  // const workComponent = document.querySelector('.work_filter-container') as HTMLElement;
-  // sectionReveal(workSection, workComponent);
+  const heroSection = document.querySelector('.section_work-hero') as HTMLElement;
+  const heroComponent = document.querySelector('.work-hero_component') as HTMLElement;
+  sectionReveal(heroSection, heroComponent);
 
   // Service Cards
   if (windowLocation !== '/brand') {
     workServices();
   }
+  const servicesSection = document.querySelector('.section_work-services') as HTMLElement;
+  const servicesComponent = document.querySelector('.work-services_component') as HTMLElement;
+  sectionReveal(servicesSection, servicesComponent);
 
   // Client Testimonials
   workTestimonials();
 
+  const testimonialSection = document.querySelector('.section_work-testimonials') as HTMLElement;
+  const testimonialComponent = document.querySelector(
+    '.work-testimonials_component'
+  ) as HTMLElement;
+  sectionReveal(testimonialSection, testimonialComponent);
+
   // Filter Content
   filterContent();
+
+  const workSection = document.querySelector('.section_work') as HTMLElement;
+  const workComponent = document.querySelector('.work_filter-container') as HTMLElement;
+  sectionReveal(workSection, workComponent);
 
   // Video Card
   videoCards();

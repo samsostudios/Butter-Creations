@@ -15,6 +15,8 @@ export const menu = () => {
     return;
   }
 
+  console.log('menu buttons', menuOpenButton, menuCloseButton);
+  console.log('menu', menuComponent, menuLinks);
   menuOpenButton.addEventListener('click', () => {
     menuInAnimation();
   });

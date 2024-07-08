@@ -3,8 +3,8 @@ import { gsap } from 'gsap';
 const menuOpenButton = document.querySelector('.nav_link.is-menu') as HTMLElement;
 const menuCloseButton = document.querySelector('.nav_link.is-close') as HTMLElement;
 const menuComponent = document.querySelector('.menu_component') as HTMLElement;
-const menuLinks = [...menuComponent.querySelectorAll('.menu_link')];
-const menuStamp = menuComponent.querySelector('.mneu_stamp');
+const menuLinks = [...document.querySelectorAll('.menu_link')];
+const menuStamp = document.querySelector('.mneu_stamp');
 
 console.log('Menu Component', menuComponent);
 console.log('Menu links', menuLinks);

@@ -25,9 +25,19 @@ window.Webflow.push(() => {
   } else if (windowLocation.includes('/about')) {
     about();
   } else if (windowLocation.includes('/music')) {
-    workTemplate();
+    const hasFurtherIndex = windowLocation.substring(6);
+
+    console.log('here', hasFurtherIndex);
+
+    if (hasFurtherIndex === '') {
+      workTemplate();
+    } else {
+      workDetailTemplate();
+    }
   } else if (windowLocation.includes('/brand')) {
-    const hasFurtherIndex = windowLocation.substring(5);
+    const hasFurtherIndex = windowLocation.substring(6);
+
+    console.log('here', hasFurtherIndex);
 
     if (hasFurtherIndex === '' || hasFurtherIndex === 'd') {
       workTemplate();

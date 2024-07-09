@@ -6,7 +6,7 @@ export const workTestimonials = () => {
   ) as HTMLElement;
 
   if (!wTestimonialComponent) {
-    console.log('WARN::/ Missing component in DOM');
+    console.log('WARN:// Missing Testimonials UI');
     return;
   }
 

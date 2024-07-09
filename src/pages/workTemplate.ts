@@ -6,11 +6,9 @@ import { workServices } from 'src/components/workServices';
 import { workTestimonials } from 'src/components/workTestimonials';
 
 export const workTemplate = () => {
-  // console.log('Work overview template');
-  const windowLocation = window.location.pathname as string;
   // Page Globals
   // ------------
-  // console.log('work overview');
+  const windowLocation = window.location.pathname as string;
 
   const heroSection = document.querySelector('.section_work-hero') as HTMLElement;
   const heroComponent = document.querySelector('.work-hero_component') as HTMLElement;

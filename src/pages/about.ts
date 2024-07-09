@@ -12,6 +12,10 @@ export const about = () => {
   // Hero
   reelModal();
 
+  const aboutHero = document.querySelector('.section_about-hero') as HTMLElement;
+  const heroComponent = document.querySelector('.about-hero_component') as HTMLElement;
+  sectionReveal(aboutHero, heroComponent);
+
   // Services
   const servicesSection = document.querySelector('.section_about-services') as HTMLElement;
   const servicesComponent = document.querySelector('.about-services_component') as HTMLElement;

@@ -4,6 +4,12 @@ export const pageTransition = () => {
   const transitionElement = document.querySelector('.transition_component');
   const allLinks = [...document.querySelectorAll('a')];
 
+  console.log('PAGE', transitionElement);
+
+  if (!transitionElement) {
+    console.log('WARN:// Missing Page Transition UI');
+  }
+
   // Remove Transition on Page load
   gsap.to(transitionElement, {
     delay: 0.5,

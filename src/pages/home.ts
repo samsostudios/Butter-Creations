@@ -15,6 +15,10 @@ export const home = () => {
   reelModalCursor();
   reelModal();
 
+  const homeHero = document.querySelector('.section_home-hero') as HTMLElement;
+  const homeHeroComponent = document.querySelector('.home-hero_component') as HTMLElement;
+  sectionReveal(homeHero, homeHeroComponent);
+
   // Overview
   const overviewSection = document.querySelector('.section_home-overview') as HTMLElement;
   const overviewComponent = document.querySelector('.home-overview_component') as HTMLElement;
